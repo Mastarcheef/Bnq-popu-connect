@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attijariwafa Bank - Connexion</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #ff8c00, #ffa733);
+    color: white;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: white;
+  }
+
+  header img {
+    height: 30px;
+  }
+
+  header .icons i {
+    font-size: 18px;
+    color: #ff8c00;
+    margin-left: 15px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+
+  input,
+  .keypad button {
+    font-size: 1.2em;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+  }
+
+  input[disabled] {
+    background-color: #f9cc99;
+    color: #fff;
+  }
+
+  .keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .keypad button {
+    background-color: white;
+    color: #ff8c00;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+
+  button.submit {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  button.submit:hover {
+    background-color: #333;
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  a {
+    color: #ffe2c4;
+    font-size: 0.9em;
+    display: block;
+    margin-top: 10px;
+  }
+
+  .bottom-section {
+    background: white;
+    color: black;
+    padding: 20px 15px;
+    font-size: 14px;
+  }
+
+  .bottom-section h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+  }
+
+  .bottom-section h3 i {
+    margin-right: 8px;
+    color: #ff8c00;
+  }
+
+  .bottom-section a {
+    color: #ff8c00;
+    text-decoration: underline;
+  }
+
+  .bottom-section img {
+    max-width: 100%;
+    margin: 10px 0;
+  }
+
+  footer {
+    background-color: #1f1f1f;
+    color: white;
+    font-size: 0.8em;
+    padding: 20px;
+  }
+
+  footer h3 {
+    color: #ffc966;
+    font-size: 0.9em;
+    margin-top: 15px;
+  }
+
+  footer ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  footer li {
+    margin-bottom: 5px;
+  }
+
+  .social {
+    text-align: center;
+    margin: 15px 0;
+  }
+
+  .social i {
+    margin: 0 10px;
+    color: #ff8c00;
+  }
+
+  /* Préchargement */
+  #preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeOut 1s ease-out forwards;
+    animation-delay: 2.5s;
+  }
+
+  #preloader img {
+    width: 100px;
+    opacity: 0;
+    transform: scale(0.5);
+    animation: zoomIn 2s ease-out forwards;
+  }
+
+  @keyframes zoomIn {
+    to {
+      opacity: 1;
+      transform: scale(1.5);
+    }
+  }
+
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  /* Contenu principal masqué au départ */
+  body main {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+  }
+</style>
+
+
+</head>
+<body>
+  <main style="display: none;">
+  <header>
+
+    <img src="https://storage.googleapis.com/endurance-apps-liip/media/cache/theming_no_filter_grid_fs/65003414cffc8657ec0129a6" width="150" alt="">
+    <div class="icons">
+      <i class="fas fa-search"></i>
+      <i class="fas fa-lock"></i>
+    </div>
+  </header>
+  <div class="container">
+    <h1>ACCÉDER À MES COMPTES</h1>
+    <label>1. Mon numéro client</label>
+    <input id="identifiant" type="text" maxlength="10" oninput="checkIdentifiant()">
+    <label>2. Mon code secret (6 chiffres)</label>
+    <input id="password" type="password" maxlength="6" disabled>
+    <div class="keypad">
+      <button onclick="addNumber('1')">1</button>
+      <button onclick="addNumber('2')">2</button>
+      <button onclick="addNumber('3')">3</button>
+      <button onclick="addNumber('4')">4</button>
+      <button onclick="addNumber('5')">5</button>
+      <button onclick="addNumber('6')">6</button>
+      <button onclick="addNumber('7')">7</button>
+      <button onclick="addNumber('8')">8</button>
+      <button onclick="addNumber('9')">9</button>
+      <button onclick="addNumber('0')">0</button>
+      <button onclick="clearPassword()">C</button>
+    </div>
+    <button class="submit" onclick="submitLogin()">Accéder à mes Comptes</button>
+    <a href="#">Numéro client ou code secret oublié ?</a>
+  </div>
+
+  <div class="bottom-section">
+    <h3><i class="fas fa-lock"></i> Vos codes d'accès</h3>
+    <p><a href="#">Obtenir ses codes d'accès</a></p>
+
+    <h3><i class="fas fa-shield-alt"></i> Conseils de sécurité</h3>
+    précédée par une icône cadenas et contient un https:// qui garantit une connexion sécurisée.</p>
+    <p><a href="#">Découvrez nos conseils sécurité</a> et les bonnes pratiques pour consulter et identifier les dangers du web.</p>
+
+    <h3><i class="fas fa-universal-access"></i> Pour une meilleure accessibilité</h3>
+    <p><a href="#">Connectez-vous</a> grâce à la grille contrastée, agrandie et bénéficiez d’un accompagnement vocal.</p>
+    <p><a href="#">Accédez au service Sourds et Malentendants, Sourds et Aveugles ou Aphasiques</a> pour contacter un conseiller avec un dispositif en LSF, LPC ou TIP.</p>
+    <p><a href="#">Rendez-vous sur la page Accessibilité</a> pour plus d'informations sur l'accessibilité numérique chez BANQUE POPULAIRE.</p>
+  </div>
+
+  <footer>
+    <div class="social">Suivez-nous sur :
+      <i class="fab fa-facebook"></i>
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-youtube"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-linkedin"></i>
+    </div>
+
+    <p><strong>CONTACT</strong> | <strong>TROUVER UNE AGENCE</strong></p>
+    <p><strong>LES APPLICATIONS MOBILES</strong></p>
+
+    <h3>INFORMATIONS LÉGALES</h3>
+    <ul>
+      <li>Données personnelles</li>
+      <li>Mentions légales</li>
+      <li>Cookies</li>
+      <li>Réglementation</li>
+      <li>Fonds de Garantie des Dépôts et résolution</li>
+    </ul>
+
+    <h3>NOUS CONNAÎTRE</h3>
+    <ul>
+      <li>La banque d’un monde qui change</li>
+      <li>Nos engagements responsables</li>
+      <li>Emploi & Carrière</li>
+    </ul>
+
+    <h3>INFORMATIONS</h3>
+    <ul>
+      <li>Site Accessible</li>
+      <li>Site Sécurisé</li>
+      <li>Conditions d’éligibilité</li>
+      <li>Tarifs et conditions</li>
+      <li>Glossaire</li>
+      <li>Guides et brochures</li>
+    </ul>
+  </footer>
+  </main>
+
+  <div id="preloader">
+  <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/2/22/Banquepopulaire_logo.svg/2023px-Banquepopulaire_logo.svg.png" alt="Logo">
+</div>
+
+</body>
+
+  <script>
+    const identifiant = document.getElementById('identifiant');
+    const password = document.getElementById('password');
+
+    function checkIdentifiant() {
+      if (identifiant.value.length > 0) {
+        password.disabled = false;
+        password.style.backgroundColor = 'white';
+        password.style.color = 'black';
+      } else {
+        password.disabled = true;
+        password.value = '';
+        password.style.backgroundColor = '#a1d8a3';
+        password.style.color = 'white';
+      }
+    }
+
+    function addNumber(num) {
+      if (!password.disabled && password.value.length < 6) {
+        password.value += num;
+      }
+    }
+
+    function clearPassword() {
+      if (!password.disabled) password.value = '';
+    }
+
+    function submitLogin() {
+      if (identifiant.value === '0234809397' && password.value === '028503') {
+        document.querySelector('.submit').textContent = 'Chargement...';
+        setTimeout(() => {
+          window.location.href = 'accueil.html';
+        }, 2000);
+      } else {
+        alert('Identifiants incorrects');
+      }
+    }
+  </script>
+    <script>
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+  if (!isMobile) {
+    // Redirection vers la version ordinateur
+    window.location.href = "desk.html";
+  }
+</script>
+<script>
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      document.querySelector("main").style.display = "block";
+      setTimeout(() => {
+        document.querySelector("main").style.opacity = "1";
+      }, 50);
+    }, 2500); // Attendre que l'animation du logo soit terminée
+  });
+</script>
+
+
+</html>
